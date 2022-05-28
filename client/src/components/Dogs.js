@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
 const Dogs = () => {
     const [dogs, setDogs] = useState();
@@ -42,7 +42,7 @@ const Dogs = () => {
             {dogs?.data?.length
                 ? (
                     <>
-                    <table border="1" cellpading="5" cellspacing="5">
+                    <table border="1" cellPadding="5" cellSpacing="5">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -59,7 +59,7 @@ const Dogs = () => {
                                 <td>
                                     <a href=""> View </a> |
                                     <a href=""> Edit </a> |
-                                    <a href=""> Delete </a>
+                                    <Link to={`/dogs/delete/${dog.id}`} state={{dog}}> Delete</Link>
                                 </td>
                             </tr>
                         )

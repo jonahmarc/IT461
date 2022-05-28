@@ -3,6 +3,7 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Layout from './components/Layout';
 import Dogs from './components/Dogs';
+import DogDelete from './components/DogDelete';
 import Admin from './components/Admin';
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
@@ -37,6 +38,9 @@ function App() {
           <Route path="dogs" element={<Dogs />} />
         </Route>
 
+        <Route element={<RequireAuth allowedRoles={[ROLES.Editor]} />}>
+          <Route path="dogs/delete/:id" element={<DogDelete />} />
+        </Route>
 
         <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
           <Route path="admin" element={<Admin />} />
